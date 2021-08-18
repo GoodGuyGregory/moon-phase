@@ -1,12 +1,12 @@
-// Load UnixTime form API:
-//  https://showcase.api.linx.twenty57.net/UnixTime/tounix?date=now
-
 let unixTime;
 let moonPhase;
 let farmSenseInfo;
 let currentMoonName;
 
+let clientMoon = new Moon();
+
 //  runs before sketch
+// Load UnixTime from API:
 function preload() {
   // Get current unixtime from API
   let unixTimeUrl = 'https://showcase.api.linx.twenty57.net/UnixTime/tounix?date=now';
@@ -41,17 +41,42 @@ async function getMoonPhase(unixtime) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(15);
+
+}
+
+
+function formatMoonReponse(incomingMoonPhase) {
+  let lowerCaseFirstParam = "";
+  let secondUpperCaseParam = "";
+  let firstSpaceValue = incomingMoonPhase.indexOf(' ');
+  lowerCaseFirstParam = incomingMoonPhase.substring(0, firstSpaceValue);
+  // removes spaces
+  incomingMoonPhase = incomingMoonPhase.replace(/\s/g, '');
+  lowerCaseFirstParam = lowerCaseFirstParam.toLowerCase();
+  // console.log(lowerCaseFirstParam);
+  secondUpperCaseParam = incomingMoonPhase.substring(firstSpaceValue, moonPhase.length);
+
+  // final string 
+  // "<lowercase>" + <uppercaseletters> + "Moon"
+  let searchParameter = lowerCaseFirstParam + secondUpperCaseParam + "Moon";
+  // console.log(searchParameter);
+  return searchParameter;
 }
 
 
 
-
 function draw() {
-
+  //  async wait time for unixTime to come through
   if (unixTime != undefined) {
     getMoonPhase(unixTime);
-    console.log(moonPhase);
-    console.log(currentMoonName);
+    if (moonPhase != undefined) {
+      // create a moon object:
+      let clientMoon = new Moon(500);
+      let searchMoon = formatMoonReponse(moonPhase)
+      clientMoon[searchMoon]();
+
+    }
+
   }
+  // console.log(currentMoonName);
 }
