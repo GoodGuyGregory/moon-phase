@@ -11,3 +11,7 @@
 * [httpDo](https://p5js.org/reference/#/p5/httpDo)
 * [HttpGet](https://p5js.org/reference/#/p5/httpGet)
 
+**Javascript Documentation**
+
+[Different Methods for Creating Objects in JS](https://www.developerdrive.com/4-ways-to-create-an-object-in-javascript-with-examples/)
+
