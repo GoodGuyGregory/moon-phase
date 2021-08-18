@@ -22,9 +22,9 @@ function preload() {
 
 }
 
-async function getMoonPhase() {
+async function getMoonPhase(unixtime) {
 
-  let farmSenseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + "1629291094";
+  let farmSenseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + unixtime;
 
   httpGet(farmSenseUrl, function (farmsense) {
     // when the HTTP request completes, populate the variable that holds the
@@ -48,8 +48,10 @@ function setup() {
 
 
 function draw() {
-  getMoonPhase();
-  console.log(unixTime);
-  console.log(moonPhase);
-  console.log(currentMoonName);
+
+  if (unixTime != undefined) {
+    getMoonPhase(unixTime);
+    console.log(moonPhase);
+    console.log(currentMoonName);
+  }
 }
