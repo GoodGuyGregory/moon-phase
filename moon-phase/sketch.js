@@ -66,6 +66,7 @@ function formatMoonReponse(incomingMoonPhase) {
 
 
 function draw() {
+  background(15);
   //  async wait time for unixTime to come through
   if (unixTime != undefined) {
     getMoonPhase(unixTime);
