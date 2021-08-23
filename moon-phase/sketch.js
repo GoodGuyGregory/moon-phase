@@ -74,10 +74,11 @@ function draw() {
       // create a moon object:
       let clientMoon = new Moon(500);
       let searchMoon = formatMoonReponse(moonPhase)
-      clientMoon[searchMoon]();
+      // clientMoon[searchMoon]();
 
     }
 
   }
-  // console.log(currentMoonName);
+  console.log(currentMoonName);
+  console.log(moonPhase);
 }

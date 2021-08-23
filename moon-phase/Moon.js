@@ -18,11 +18,13 @@ function Moon(desiredSize) {
         strokeWeight(5);
         ellipse(this.x, this.y, this.diameter, this.diameter);
         fill(255)
-        ellipse(this.x + 30, this.y, this.diameter - 70, this.diameter - 70);
+        ellipse(this.x + 45, this.y, this.diameter - 70, this.diameter - 70);
 
     };
     this.fullMoon = function () {
         fill(255);
+        stroke(255);
+        strokeWeight(5);
         ellipse(this.x, this.y, this.diameter, this.diameter);
     };
     this.waningGibbosMoon = function () {
