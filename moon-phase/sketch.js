@@ -73,11 +73,10 @@ function draw() {
     if (moonPhase != undefined) {
       // create a moon object:
       let clientMoon = new Moon(500);
-      let searchMoon = formatMoonReponse(moonPhase)
+      let searchMoon = formatMoonReponse(moonPhase);
       clientMoon[searchMoon]();
 
     }
 
   }
-  // console.log(currentMoonName);
 }
