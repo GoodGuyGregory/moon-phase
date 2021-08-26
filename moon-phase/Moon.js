@@ -4,9 +4,13 @@ function Moon(desiredSize) {
     this.diameter = desiredSize;
 
     this.newmoon = function () {
-        fill(255);
-        ellipse(this.x, this.y, this.diameter, this.diameter);
-
+        fill(0);
+        stroke(255);
+        strokeWeight(5);
+        fill(255)
+        ellipse(windowWidth / 2, windowHeight / 2, 450, 450);
+        fill(0);
+        arc(windowWidth / 2, windowHeight / 2, 450, 450, 0, 2 * PI, OPEN);
     };
     this.waxingCresentMoon = function () {
         fill(255);
