@@ -30,7 +30,9 @@ function preload() {
 
   fullMoon = loadImage("./moonPhases/fullMoon.png");
   waningGibbousMoon = loadImage("./moonPhases/waningGibbousMoon.png");
-
+  thirdQuarterMoon = loadImage("./moonPhases/thirdQuarterMoon.png");
+  waningCresentMoon = loadImage("./moonPhases/waningCrescentMoon.png");
+  newMoon = loadImage("./moonPhases/newMoon.png");
 
 }
 
@@ -97,6 +99,12 @@ function draw() {
           break;
         case 'waningGibbousMoon':
           image(waningGibbousMoon, 500, 100, 350, 350);
+        case 'thirdQuarterMoon':
+          image(thirdQuarterMoon, 500, 100, 350, 350);
+        case 'waningCrescentMoon':
+          image(waningCresentMoon, 500, 100, 350, 350);
+        case 'newMoon':
+          image(newMoon, 500, 100, 350, 350);
         default:
           console.log(`no moon phase created yet for ${searchMoon}`);
       }
