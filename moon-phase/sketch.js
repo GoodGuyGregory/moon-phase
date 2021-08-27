@@ -3,7 +3,15 @@ let moonPhase;
 let farmSenseInfo;
 let currentMoonName;
 
-let clientMoon = new Moon();
+//  MoonImage
+let newMoon;
+let waxingCrescentMoon;
+let firstQuarterMoon;
+let waxingGibbousMoon;
+let fullMoon;
+let waningGibbousMoon;
+let lastQuarterMoon;
+let waningCresentMoon;
 
 //  runs before sketch
 // Load UnixTime from API:
@@ -19,6 +27,8 @@ function preload() {
   }, function (error) {
     console.log("callback error getting current unix time" + error);
   });
+
+  fullMoon = loadImage("./moonPhases/fullMoon.png");
 
 }
 
@@ -66,19 +76,23 @@ function formatMoonReponse(incomingMoonPhase) {
 
 
 function draw() {
-  background(15);
+  background(0);
   //  async wait time for unixTime to come through
   if (unixTime != undefined) {
     getMoonPhase(unixTime);
     if (moonPhase != undefined) {
       // create a moon object:
-      let clientMoon = new Moon(500);
-      let searchMoon = formatMoonReponse(moonPhase)
-      // clientMoon[searchMoon]();
+      let searchMoon = formatMoonReponse(moonPhase);
+      console.log(searchMoon);
+      console.log(currentMoonName);
+      console.log(moonPhase);
+
+      // TODO: display the moon image based on the parsed API 
+      // response
+
 
     }
+    image(fullMoon, 500, 100, 450, 450);
 
   }
-  console.log(currentMoonName);
-  console.log(moonPhase);
 }
