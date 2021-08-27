@@ -29,6 +29,8 @@ function preload() {
   });
 
   fullMoon = loadImage("./moonPhases/fullMoon.png");
+  waningGibbousMoon = loadImage("./moonPhases/waningGibbousMoon.png");
+
 
 }
 
@@ -89,10 +91,18 @@ function draw() {
 
       // TODO: display the moon image based on the parsed API 
       // response
+      switch (searchMoon) {
+        case 'fullMoon':
+          image(fullMoon, 500, 100, 350, 350);
+          break;
+        case 'waningGibbousMoon':
+          image(waningGibbousMoon, 500, 100, 350, 350);
+        default:
+          console.log(`no moon phase created yet for ${searchMoon}`);
+      }
 
 
     }
-    image(fullMoon, 500, 100, 450, 450);
 
   }
 }
