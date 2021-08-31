@@ -33,6 +33,9 @@ function preload() {
   thirdQuarterMoon = loadImage("./moonPhases/thirdQuarterMoon.png");
   waningCresentMoon = loadImage("./moonPhases/waningCrescentMoon.png");
   newMoon = loadImage("./moonPhases/newMoon.png");
+  waxingCrescentMoon = loadImage("./moonPhases/waxingCresentMoon.png");
+  firstQuarterMoon = loadImage("./moonPhases/firstQuarterMoon.png");
+  waxingGibbousMoon = loadImage("./moonPhases/waxingGibbousMoon.png");
 
 }
 

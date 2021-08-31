@@ -19,6 +19,6 @@
 **Javascript Documentation**
 
 [Different Methods for Creating Objects in JS](https://www.developerdrive.com/4-ways-to-create-an-object-in-javascript-with-examples/)  
-[Checking Object's Property](https://attacomsian.com/blog/javascript-object-check-if-property-exists)  
-[Access an Object's Methods fom a parameter value](https://stackoverflow.com/questions/9854995/javascript-dynamically-invoke-object-method-from-string)  
+[Node-Cron](https://github.com/ncb000gt/node-cron)  
+[Node Mailer](https://nodemailer.com/usage/)
 
