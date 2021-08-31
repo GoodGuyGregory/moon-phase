@@ -3,6 +3,11 @@ let moonPhase;
 let farmSenseInfo;
 let currentMoonName;
 
+
+// fonts:
+let ubuntuFont;
+let zCoolFont;
+
 // Stars Array
 let stars = [];
 let positions = [];
@@ -16,6 +21,7 @@ let fullMoon;
 let waningGibbousMoon;
 let lastQuarterMoon;
 let waningCresentMoon;
+
 
 //  runs before sketch
 // Load UnixTime from API:
@@ -32,6 +38,8 @@ function preload() {
     console.log("callback error getting current unix time" + error);
   });
 
+  // moon images:
+  // =============================================================
   fullMoon = loadImage("./moonPhases/fullMoon.png");
   waningGibbousMoon = loadImage("./moonPhases/waningGibbousMoon.png");
   thirdQuarterMoon = loadImage("./moonPhases/thirdQuarterMoon.png");
@@ -41,9 +49,13 @@ function preload() {
   firstQuarterMoon = loadImage("./moonPhases/firstQuarterMoon.png");
   waxingGibbousMoon = loadImage("./moonPhases/waxingGibbousMoon.png");
 
+  // fonts:
+  // =============================================================
+  ubuntuFont = loadFont('fonts/Ubuntu-Regular.ttf');
+  righteousFont = loadFont('fonts/Righteous-Regular.ttf');
 }
 
-async function getMoonPhase(unixtime) {
+function getMoonPhase(unixtime) {
 
   let farmSenseUrl = 'https://api.farmsense.net/v1/moonphases/?d=' + unixtime;
 
@@ -61,27 +73,8 @@ async function getMoonPhase(unixtime) {
 }
 
 
-function formatMoonName(currentMoonName) {
-  console.log("Prior to Replacement for Spaces");
-  console.log(currentMoonName);
+function getMoonInfo(moonName) {
 
-  currentMoonName.replace(/s,'%20')
-}
-
-async function getMoonInfo(moonName) {
-
-  moonName = formatMoonName(moonName);
-
-  let wikipediaUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=10&exlimit=1&titles=' + moonName + '&explaintext=1&format=json';
-
-  httpGet(wikipediaUrl, function (wikiPage) {
-    // when the HTTP request completes, populate the variable that holds the
-    // earthquake data used in the visualization.
-    moonPageInfo = JSON.parse(wikiPage);
-    console.log(moonPageInfo);
-  }, function (error) {
-    console.log("callback error getting current unix time" + error);
-  });
 }
 
 
@@ -133,51 +126,63 @@ function draw() {
   if (unixTime != undefined) {
     getMoonPhase(unixTime);
     if (moonPhase != undefined) {
-      // create a moon object:
+      // find the moon from the response data method
       let searchMoon = formatMoonReponse(moonPhase);
-
-      // TEST VALUES:
-      // console.log(searchMoon);
-      // console.log(currentMoonName);
-      // console.log(moonPhase);
-
-      formatMoonName(currentMoonName);
-
 
       // TODO: display the moon image based on the parsed API 
       // response
       switch (searchMoon) {
         case 'fullMoon':
-          image(fullMoon, 500, 100, 350, 350);
+          image(fullMoon, 500, 100, 450, 450);
           break;
         case 'waningGibbousMoon':
-          image(waningGibbousMoon, 500, 100, 350, 350);
+          image(waningGibbousMoon, 500, 100, 450, 450);
           break;
         case 'thirdQuarterMoon':
-          image(thirdQuarterMoon, 500, 100, 350, 350);
+          image(thirdQuarterMoon, 500, 100, 450, 450);
           break;
         case 'waningCrescentMoon':
-          image(waningCrescentMoon, 500, 100, 350, 350);
+          image(waningCrescentMoon, 450, 100, 420, 420);
           break;
         case 'newMoon':
-          image(newMoon, 500, 100, 350, 350);
+          image(newMoon, 500, 100, 450, 450);
           break;
         case 'waxingCrescentMoon':
-          image(waxingCrescentMoon, 500, 100, 350, 350);
+          image(waxingCrescentMoon, 500, 100, 450, 450);
           break;
         case 'firstQuarterMoon':
-          image(firstQuarterMoon, 500, 100, 350, 350);
+          image(firstQuarterMoon, 500, 100, 450, 450);
           break;
         case 'waxingGibbousMoon':
-          image(waxingGibbousMoon, 500, 100, 350, 350);
+          image(waxingGibbousMoon, 500, 100, 450, 450);
           break;
         default:
           console.log(`no moon phase created yet for ${searchMoon}`);
       }
 
+      //  display lunar phase
+      fill(255);
+      textFont(righteousFont);
+      textSize(50);
+      textAlign(CENTER, CENTER);
+      text(`${moonPhase} Moon`, 650, 600);
+
+      // display moon name
+      fill(255);
+      textFont(righteousFont);
+      textSize(50);
+      text(`${currentMoonName}`, 1140, 100);
+      // display info details
+      fill(255);
+      textFont(ubuntuFont);
+      textSize(20);
+      // text(`${currentMoonName}`, 1140, 200);
+      // TEST VALUES:
+      //  Lunar Phase
+      // console.log(searchMoon);
+      // Moon Name for the Month
+      // console.log(currentMoonName);
 
     }
-
-
   }
 }
