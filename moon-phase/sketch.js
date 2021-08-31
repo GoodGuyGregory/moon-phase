@@ -3,6 +3,10 @@ let moonPhase;
 let farmSenseInfo;
 let currentMoonName;
 
+// Stars Array
+let stars = [];
+let positions = [];
+
 //  MoonImage
 let newMoon;
 let waxingCrescentMoon;
@@ -56,9 +60,44 @@ async function getMoonPhase(unixtime) {
   });
 }
 
+
+function formatMoonName(currentMoonName) {
+  console.log("Prior to Replacement for Spaces");
+  console.log(currentMoonName);
+
+  currentMoonName.replace(/s,'%20')
+}
+
+async function getMoonInfo(moonName) {
+
+  moonName = formatMoonName(moonName);
+
+  let wikipediaUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=10&exlimit=1&titles=' + moonName + '&explaintext=1&format=json';
+
+  httpGet(wikipediaUrl, function (wikiPage) {
+    // when the HTTP request completes, populate the variable that holds the
+    // earthquake data used in the visualization.
+    moonPageInfo = JSON.parse(wikiPage);
+    console.log(moonPageInfo);
+  }, function (error) {
+    console.log("callback error getting current unix time" + error);
+  });
+}
+
+
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  //  Establish the Stars 
+  for (let i = 0; i < 1050; i++) {
+    stars[i] = random(-1200, 2200);
+  }
+
+  for (let j = 0; j < 1050; j++) {
+    positions[j] = random(-1299, 900);
+
+  }
 }
 
 
@@ -84,15 +123,26 @@ function formatMoonReponse(incomingMoonPhase) {
 
 function draw() {
   background(0);
+
+  //  Add Stars to Canvas
+  for (let i = 0; i < stars.length; i++) {
+    ellipse(stars[i], positions[i], 5, 5);
+  }
+
   //  async wait time for unixTime to come through
   if (unixTime != undefined) {
     getMoonPhase(unixTime);
     if (moonPhase != undefined) {
       // create a moon object:
       let searchMoon = formatMoonReponse(moonPhase);
-      console.log(searchMoon);
-      console.log(currentMoonName);
-      console.log(moonPhase);
+
+      // TEST VALUES:
+      // console.log(searchMoon);
+      // console.log(currentMoonName);
+      // console.log(moonPhase);
+
+      formatMoonName(currentMoonName);
+
 
       // TODO: display the moon image based on the parsed API 
       // response
@@ -127,6 +177,7 @@ function draw() {
 
 
     }
+
 
   }
 }
