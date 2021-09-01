@@ -14,7 +14,9 @@
 * [Parent Documentation](https://p5js.org/reference/#/p5.Element/parent)
 * [httpDo](https://p5js.org/reference/#/p5/httpDo)
 * [HttpGet](https://p5js.org/reference/#/p5/httpGet)
-* [arc() Documentation](https://p5js.org/reference/#/p5/arc)
+* [createP](https://p5js.org/reference/#/p5/createP)
+* [createButton](https://p5js.org/reference/#/p5/createButton)
+* [styling Buttons](https://editor.p5js.org/YuanHau/sketches/BJD8yM2T-)
 
 **Javascript Documentation**
 
