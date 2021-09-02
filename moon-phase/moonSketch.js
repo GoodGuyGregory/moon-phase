@@ -27,8 +27,6 @@ let detailText;
 
 // buttons
 let notifyMe;
-let notifying = false;
-
 
 //  runs before sketch
 // Load UnixTime from API:
@@ -129,7 +127,8 @@ function draw() {
   background(0);
 
   // create a button
-  notifyMe = createButton("Notify Me");
+  notifyMe = createA("./form.html", "Notify Me");
+  notifyMe.style("text-decoration", "none");
   notifyMe.position(45, 45);
   notifyMe.style("font-family", "Righteous");
   notifyMe.style("color", "#FFFF");
@@ -152,6 +151,7 @@ function draw() {
 
   //  Add Stars to Canvas
   for (let i = 0; i < stars.length; i++) {
+    fill(255);
     ellipse(stars[i], positions[i], 5, 5);
   }
 
@@ -160,97 +160,68 @@ function draw() {
     getMoonPhase(unixTime);
     if (moonPhase != undefined) {
 
-      if (!notifying) {
+      // find the moon from the response data method
+      let searchMoon = formatMoonReponse(moonPhase);
 
-
-        // find the moon from the response data method
-        let searchMoon = formatMoonReponse(moonPhase);
-
-        // TODO: display the moon image based on the parsed API 
-        // response
-        switch (searchMoon) {
-          case 'fullMoon':
-            image(fullMoon, 400, 100, 450, 450);
-            break;
-          case 'waningGibbousMoon':
-            image(waningGibbousMoon, 400, 100, 450, 450);
-            break;
-          case 'thirdQuarterMoon':
-            image(thirdQuarterMoon, 400, 100, 450, 450);
-            break;
-          case 'waningCrescentMoon':
-            image(waningCrescentMoon, 400, 100, 420, 420);
-            break;
-          case 'newMoon':
-            image(newMoon, 400, 100, 450, 450);
-            break;
-          case 'waxingCrescentMoon':
-            image(waxingCrescentMoon, 400, 100, 450, 450);
-            break;
-          case 'firstQuarterMoon':
-            image(firstQuarterMoon, 400, 100, 450, 450);
-            break;
-          case 'waxingGibbousMoon':
-            image(waxingGibbousMoon, 400, 100, 450, 450);
-            break;
-          default:
-            console.log(`no moon phase created yet for ${searchMoon}`);
-        }
-
-        //  display lunar phase
-        fill(255);
-        textFont(righteousFont);
-        textSize(50);
-        textAlign(CENTER, CENTER);
-        text(`${moonPhase} Moon`, 620, 600);
-        // display moon name
-        fill(255);
-        textFont(righteousFont);
-        textSize(50);
-        text(`${currentMoonName}`, 1080, 100);
-        // display info details
-        fill(255);
-        detailText = createP('This full moon corresponds with the time of harvesting corn. It is also called the Barley Moon, because it is the time to harvest and thresh the ripened barley. The Harvest Moon is the full moon nearest the autumnal equinox, which can occur in September or October and is bright enough to allow finishing all the harvest chores.');
-        detailText.position(900, 100);
-        detailText.style('font-family', 'Ubuntu');
-        detailText.style('padding', '55px');
-        detailText.style("color", "#ffff");
-        // text(`${currentMoonName}`, 1140, 200);
-        // TEST VALUES:
-        //  Lunar Phase
-        // console.log(searchMoon);
-        // Moon Name for the Month
-        // console.log(currentMoonName);
-
+      // TODO: display the moon image based on the parsed API 
+      // response
+      switch (searchMoon) {
+        case 'fullMoon':
+          image(fullMoon, 400, 100, 450, 450);
+          break;
+        case 'waningGibbousMoon':
+          image(waningGibbousMoon, 400, 100, 450, 450);
+          break;
+        case 'thirdQuarterMoon':
+          image(thirdQuarterMoon, 400, 100, 450, 450);
+          break;
+        case 'waningCrescentMoon':
+          image(waningCrescentMoon, 400, 100, 420, 420);
+          break;
+        case 'newMoon':
+          image(newMoon, 400, 100, 450, 450);
+          break;
+        case 'waxingCrescentMoon':
+          image(waxingCrescentMoon, 400, 100, 450, 450);
+          break;
+        case 'firstQuarterMoon':
+          image(firstQuarterMoon, 400, 100, 450, 450);
+          break;
+        case 'waxingGibbousMoon':
+          image(waxingGibbousMoon, 400, 100, 450, 450);
+          break;
+        default:
+          console.log(`no moon phase created yet for ${searchMoon}`);
       }
-      else {
-        // display moon name
-        fill(255);
-        textFont(righteousFont);
-        textSize(50);
-        text(`${currentMoonName}`, 1080, 100);
-        // display info details
-        fill(255);
-        detailText = createP('This full moon corresponds with the time of harvesting corn. It is also called the Barley Moon, because it is the time to harvest and thresh the ripened barley. The Harvest Moon is the full moon nearest the autumnal equinox, which can occur in September or October and is bright enough to allow finishing all the harvest chores.');
-        detailText.position(900, 100);
-        detailText.style('font-family', 'Ubuntu');
-        detailText.style('padding', '55px');
-        detailText.style("color", "#ffff");
-        // text(`${currentMoonName}`, 1140, 200);
-        // TEST VALUES:
-        //  Lunar Phase
-        // console.log(searchMoon);
-        // Moon Name for the Month
-        // console.log(currentMoonName);
 
-        fill(255);
-        strokeJoin(ROUND);
-        rect(400, 80, 450, 550);
+      //  display lunar phase
+      fill(255);
+      textFont(righteousFont);
+      textSize(50);
+      textAlign(CENTER, CENTER);
+      text(`${moonPhase} Moon`, 620, 600);
+      // display moon name
+      fill(255);
+      textFont(righteousFont);
+      textSize(50);
+      text(`${currentMoonName}`, 1080, 100);
+      // display info details
+      fill(255);
+      detailText = createP('This full moon corresponds with the time of harvesting corn. It is also called the Barley Moon, because it is the time to harvest and thresh the ripened barley. The Harvest Moon is the full moon nearest the autumnal equinox, which can occur in September or October and is bright enough to allow finishing all the harvest chores.');
+      detailText.position(900, 100);
+      detailText.style('font-family', 'Ubuntu');
+      detailText.style('padding', '55px');
+      detailText.style("color", "#ffff");
+      // text(`${currentMoonName}`, 1140, 200);
+      // TEST VALUES:
+      //  Lunar Phase
+      // console.log(searchMoon);
+      // Moon Name for the Month
+      // console.log(currentMoonName);
 
-
-      }
     }
 
   }
+
 
 }
