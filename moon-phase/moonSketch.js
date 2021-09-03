@@ -117,11 +117,6 @@ function formatMoonReponse(incomingMoonPhase) {
   return searchParameter;
 }
 
-function toggleMoon() {
-  console.log("email generator opening...");
-  notifying = !notifying;
-}
-
 
 function draw() {
   background(0);
@@ -142,7 +137,6 @@ function draw() {
     notifyMe.style("background", "rgb(2, 0, 36)");
     notifyMe.style("background", "linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)");
     notifyMe.style("cursor", "pointer");
-    notifyMe.mousePressed(toggleMoon);
   }
   else {
     notifyMe.style("background", "rgb(131,58,180)");

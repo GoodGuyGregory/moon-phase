@@ -16,6 +16,8 @@ let emailText;
 let nameInput;
 let emailInput;
 
+let fullName;
+let subEmail;
 
 // buttons
 let backButton;
@@ -29,6 +31,12 @@ function preload() {
 
 }
 
+function collectDetails() {
+  fullName = nameInput.value();
+  subEmail = emailInput.value();
+
+  console.log(`Sending to email ${subEmail} for ${fullName} `);
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -97,14 +105,15 @@ function setup() {
   submitButton.style("margin", "40px");
   submitButton.style("border-radius", "15px");
   submitButton.style("border", "none");
-  submitButton.style("background", "rgb(2, 0, 36)");
-  submitButton.style("background", "linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)");
   submitButton.style("cursor", "pointer");
   submitButton.style("font-size", "20px");
+
 }
 
 function draw() {
   background(0);
+
+  // console.log(`mouseX: ${mouseX}, mouseY: ${mouseY}`);
 
   // create a button
   backButton = createA("./index.html", "Go Back");
@@ -128,11 +137,28 @@ function draw() {
     backButton.style("background", "linear-gradient(180deg, rgba(131,58,180,1) 42%, rgba(253,29,29,1) 98%)");
   }
 
+
+
+  if (mouseX >= 716 && mouseX < 810 && mouseY > 455 && mouseY < 512) {
+    submitButton.style("background", "rgb(2,0,36)");
+    submitButton.style("background", "linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)");
+    submitButton.style("cursor", "pointer");
+    // button clicked
+    if (mouseX >= 716 && mouseX < 810 && mouseY > 455 && mouseY < 512 && mouseIsPressed) {
+      collectDetails();
+    }
+  }
+  else {
+    submitButton.style("background", "rgb(131,58,180)");
+    submitButton.style("background", "linear-gradient(180deg, rgba(131,58,180,1) 42%, rgba(253,187,29,1) 98%)");
+  }
   //  Add Stars to Canvas
   for (let i = 0; i < stars.length; i++) {
     fill(255);
     ellipse(stars[i], positions[i], 5, 5);
   }
+
+
 
 
 
