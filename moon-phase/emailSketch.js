@@ -19,7 +19,7 @@ let emailInput;
 
 // buttons
 let backButton;
-let submitButtons;
+let submitButton;
 
 function preload() {
   // fonts:
@@ -42,6 +42,65 @@ function setup() {
     positions[j] = random(-1299, 900);
 
   }
+
+  let subscribe = createDiv('Enter your email to be informed of Moon Phase Changes:');
+
+
+  // position set
+  subscribe.position(400, 100);
+  subscribe.style("height", "440px");
+  subscribe.style("width", "640px");
+  subscribe.style("padding", "40px");
+  subscribe.style("margin", "10px");
+  subscribe.style("border-radius", "15px");
+  subscribe.style("display", "flex");
+  subscribe.style("align-items", "center");
+  subscribe.style("justify-content", "flex-start");
+  subscribe.style("flex-direction", "column");
+  subscribe.style("color", "#ffff");
+  subscribe.style('font-family', 'Ubuntu');
+  subscribe.style('font-size', '23px');
+  subscribe.style("font-weight", "bold");
+  subscribe.style("background", "rgb(131,58,180)");
+  subscribe.style("background", "linear-gradient(180deg, rgba(131,58,180,1) 42%, rgba(253,29,29,1) 98%)");
+
+  nameText = createP('Enter Your Full Name:');
+  nameText.parent(subscribe);
+  nameText.style("color", "#ffff");
+  nameText.style("margin-top", "45px");
+  nameText.style("font-size", "24px");
+
+  nameInput = createInput('');
+  nameInput.parent(subscribe);
+  nameInput.size(200);
+  nameInput.style("color", "black");
+  nameInput.style("font-size", "20px");
+
+  emailText = createP("Enter Your Email:");
+  emailText.parent(subscribe);
+  emailText.style("color", "#ffff");
+  emailText.style("margin-top", "35px");
+  emailText.style("font-size", "24px");
+
+
+  emailInput = createInput('');
+  emailInput.parent(subscribe);
+  emailInput.size(400);
+  emailInput.style("color", "black");
+  emailInput.style("font-size", "20px");
+
+  submitButton = createButton("Submit");
+  submitButton.parent(subscribe);
+  submitButton.style("font-family", "Righteous");
+  submitButton.style("color", "#FFFF");
+  submitButton.style("padding", "15px");
+  submitButton.style("margin", "40px");
+  submitButton.style("border-radius", "15px");
+  submitButton.style("border", "none");
+  submitButton.style("background", "rgb(2, 0, 36)");
+  submitButton.style("background", "linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)");
+  submitButton.style("cursor", "pointer");
+  submitButton.style("font-size", "20px");
 }
 
 function draw() {
@@ -75,20 +134,8 @@ function draw() {
     ellipse(stars[i], positions[i], 5, 5);
   }
 
-  let subscribe = createDiv('Enter your email to be informed of Moon Phase Changes:');
-  // position set
-  subscribe.position(400, 100);
-  subscribe.style("height", "540px");
-  subscribe.style("width", "640px");
-  subscribe.style("border-radius", "15px");
-  subscribe.style("display", "flex");
-  subscribe.style("align-items", "center");
-  subscribe.style("justify-content", "center");
-  subscribe.style("color", "#ffff");
-  subscribe.style('font-family', 'Ubuntu');
-  subscribe.style('font-size', '20px');
-  subscribe.style("background", "rgb(131,58,180)");
-  subscribe.style("background", "linear-gradient(180deg, rgba(131,58,180,1) 42%, rgba(253,29,29,1) 98%)");
+
+
 
 
 
