@@ -4,7 +4,7 @@
 
 **Moon Phases**
 
-![Moon Phases](./phases_of_the_moon.jpeg)
+![Moon Phases](./phases_of_the_moon.jpeg) Information about each new Moon per month. 
 
 **API Documentation**
 * [Farmsense](https://www.farmsense.net/api/astro-widgets/)  
@@ -17,10 +17,9 @@
 * [createP](https://p5js.org/reference/#/p5/createP)
 * [createButton](https://p5js.org/reference/#/p5/createButton)
 * [styling Buttons](https://editor.p5js.org/YuanHau/sketches/BJD8yM2T-)
+* [Text Shadows](https://css-tricks.com/almanac/properties/t/text-shadow/)
 
 **Javascript Documentation**
 
-[Different Methods for Creating Objects in JS](https://www.developerdrive.com/4-ways-to-create-an-object-in-javascript-with-examples/)  
-[Node-Cron](https://github.com/ncb000gt/node-cron)  
-[Node Mailer](https://nodemailer.com/usage/)
-
+* [Node Cron](https://github.com/ncb000gt/node-cron)
+* [Node Mailer](https://nodemailer.com/smtp/)
