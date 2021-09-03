@@ -206,6 +206,8 @@ function draw() {
       textSize(50);
       text(`${currentMoonName}`, 1080, 100);
       // display info details
+
+
       fill(255);
       detailText = createP('This full moon corresponds with the time of harvesting corn. It is also called the Barley Moon, because it is the time to harvest and thresh the ripened barley. The Harvest Moon is the full moon nearest the autumnal equinox, which can occur in September or October and is bright enough to allow finishing all the harvest chores.');
       detailText.position(900, 100);

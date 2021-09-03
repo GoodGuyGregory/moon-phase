@@ -8,10 +8,18 @@ let stars = [];
 let positions = [];
 
 // moon info
-let detailText;
+let subscribe;
+let nameText;
+let emailText;
+
+// input values
+let nameInput;
+let emailInput;
+
 
 // buttons
 let backButton;
+let submitButtons;
 
 function preload() {
   // fonts:
@@ -66,6 +74,25 @@ function draw() {
     fill(255);
     ellipse(stars[i], positions[i], 5, 5);
   }
+
+  let subscribe = createDiv('Enter your email to be informed of Moon Phase Changes:');
+  // position set
+  subscribe.position(400, 100);
+  subscribe.style("height", "540px");
+  subscribe.style("width", "640px");
+  subscribe.style("border-radius", "15px");
+  subscribe.style("display", "flex");
+  subscribe.style("align-items", "center");
+  subscribe.style("justify-content", "center");
+  subscribe.style("color", "#ffff");
+  subscribe.style('font-family', 'Ubuntu');
+  subscribe.style('font-size', '20px');
+  subscribe.style("background", "rgb(131,58,180)");
+  subscribe.style("background", "linear-gradient(180deg, rgba(131,58,180,1) 42%, rgba(253,29,29,1) 98%)");
+
+
+
+
 
 
 
