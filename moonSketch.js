@@ -32,17 +32,7 @@ let notifyMe;
 // Load UnixTime from API:
 function preload() {
   // Get current unixtime from API
-  let unixTimeUrl = 'https://showcase.api.linx.twenty57.net/UnixTime/tounix?date=now';
-
-  // get current Unix time for farmsense API
-  httpGet(unixTimeUrl, 'json', function (response) {
-    // when the HTTP request completes, populate the variable that holds the
-    // earthquake data used in the visualization.
-    unixTime = response;
-  }, function (error) {
-    console.log("callback error getting current unix time" + error);
-  });
-
+  unixTime = new Date().getTime();
   // moon images:
   // =============================================================
   fullMoon = loadImage("./moonPhases/fullMoon.png");
